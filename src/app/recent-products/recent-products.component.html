@@ -1,0 +1,21 @@
+<div class="recent-products" *ngIf="recentProducts.length > 0">
+    <h1>Recently viewed</h1>
+        
+    <div fxLayout="row wrap" fxLayoutGap="16px grid" fxLayoutAlign="center stretch" class="d--xs-none">        
+        <div fxFlex.xl="16%" fxFlex.lg="20%" fxFlex.md="25%" fxFlex.sm="33%" fxFlex.xs="100%" fxLayoutAlign=" stretch"
+            *ngFor="let product of recentProducts">
+            <mat-card>
+                <a routerLink="/product/{{product.id}}">
+                    <mat-card-content>
+                        <img style="height:100%; width: 100%;" src="{{ product.mainImage }}" alt="{{product.name}}" />
+                    </mat-card-content>
+                    <mat-card-header>
+                        <mat-card-title>{{product.name}}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-actions>
+                    </mat-card-actions>
+                </a>
+            </mat-card>
+        </div>
+    </div>
+</div>

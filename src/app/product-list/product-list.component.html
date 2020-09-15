@@ -1,0 +1,20 @@
+<h1>Product highlights</h1>
+
+<mat-spinner class="spinner" *ngIf="products.length === 0"></mat-spinner>
+<div fxLayout="row wrap" fxLayoutGap="16px grid" fxLayoutAlign="center stretch" class="d--xs-none">        
+    <div fxFlex.xl="20%" fxFlex.lg="25%" fxFlex.md="33%" fxFlex.sm="50%" fxFlex.xs="100%" fxLayoutAlign=" stretch"
+        *ngFor="let product of products">
+        <mat-card>
+            <a routerLink="/product/{{product.id}}">
+                <mat-card-content>
+                    <img style="height:100%; width: 100%;" src="{{ product.mainImage }}" alt="{{product.name}}"/>
+                </mat-card-content>
+                <mat-card-header>
+                    <mat-card-title>{{product.name}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-actions>
+                </mat-card-actions>
+            </a>
+        </mat-card>
+    </div>
+</div>

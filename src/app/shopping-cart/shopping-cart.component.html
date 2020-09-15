@@ -1,0 +1,30 @@
+<h1>Shopping cart</h1>
+
+<table *ngIf="cartContents.length > 0" mat-table [dataSource]="cartContents" class="cart">
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Product</th>
+        <td mat-cell *matCellDef="let product"><a routerLink="/product/{{product.id}}"> {{product.name}}</a> </td>
+        <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="size">
+        <th mat-header-cell *matHeaderCellDef>Size</th>
+        <td mat-cell *matCellDef="let product"> {{product.selectedSize}} </td>
+        <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef>Amount</th>
+        <td mat-cell *matCellDef="let product"> {{product.amount}} </td>
+        <td mat-footer-cell *matFooterCellDef><b>Total</b></td>
+    </ng-container>
+    <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>Price</th>
+        <td mat-cell *matCellDef="let product"> {{ product.price.amount * product.amount | currency:product.price.currency }} </td>
+        <td mat-footer-cell *matFooterCellDef> {{ totalCost | currency: 'GBP'  }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['name', 'size', 'amount', 'price']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['name', 'size', 'amount', 'price'];"></tr>
+    <tr mat-footer-row *matFooterRowDef="['name', 'size', 'amount', 'price']"></tr>
+</table>
+
+<div *ngIf="cartContents.length === 0">Your cart is empty!</div>

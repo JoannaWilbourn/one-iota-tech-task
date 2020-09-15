@@ -1,0 +1,45 @@
+<div fxLayout="row wrap" fxLayoutAlign="center stretch"  class="product" *ngIf="product">
+    <img fxFlex="33%" fxFlex.xs="100%" class="product__img" src="{{product.mainImage}}" alt="{{product.name}}"/>
+
+    <div fxFlex="67%" fxFlex.xs="100%" class="product__information">
+        <h2>{{product.name | uppercase}}</h2>
+        <div class="field">
+            <span class="field__data">
+                {{ product.price.amount | currency:product.price.currency }}
+            </span>
+        </div>
+        <div class="field">
+            <span class="field__data">
+                {{ product.stockStatus }}
+            </span>
+        </div>
+        <div class="field">
+            <button mat-raised-button
+                [ngClass]="{'size' : true, 'size--selected' : selectedSize === size}" 
+                *ngFor="let size of product.sizes"
+                (click)="selectedSize = size">
+                {{ size }}
+            </button>
+        </div>
+        <div class="field">
+            <span class="field__label">Brand: </span>
+            <span class="field__data">{{ product.brandName }}</span>
+        </div>
+        <div class="field">
+            <span class="field__label">Colour: </span>
+            <span class="field__data">{{ product.colour }}</span>
+        </div>            
+        <div class="field">
+            <span class="field__label">Product code: </span>
+            <span class="field__data">{{ product.SKU }}</span>
+        </div>
+        <div class="field">
+            <h3 class="field__label">Description</h3>
+            <span class="field__data">{{ product.description }}</span>
+        </div>
+    </div>
+    <div fxFlex="100%">
+        <button mat-raised-button class="back-button" (click)="goBack()">Back</button>
+        <button mat-raised-button class="product__add" (click)="addToBasket()">Add to basket</button>
+    </div>    
+</div>

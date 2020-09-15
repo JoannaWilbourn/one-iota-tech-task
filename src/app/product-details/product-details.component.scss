@@ -1,0 +1,42 @@
+.product {
+    margin: 40px 0px;
+    position: relative;
+}
+
+.product__add {
+    position: absolute;
+    right: 0px;
+}
+
+.product__img, .product__information {
+    display: inline-block;
+}
+
+.product__img {
+    width: 100%;
+    padding: 0px 20px;
+}
+
+.product__information {
+    vertical-align: top;
+}
+
+.field {
+    padding-bottom: 10px;
+}
+
+.field__label {
+    font-weight: bold;
+}
+
+.size {
+    width: 60px;
+    margin-right: 10px;
+}
+
+.size--selected {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #343a40;
+    font-weight: bold;
+}
